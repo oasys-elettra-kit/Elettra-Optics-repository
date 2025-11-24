@@ -25,9 +25,17 @@ Tables 1 and 2. Importantly, the $a_{ij}$ coefficients appearing in $C_{ijk}$
 depend on the grating shape, therefore the grating geometry needs to be
 taken into account, before evaluating the $F_{ijk}$ coefficients.\
 \
+The different coefficients $F_{ijk}$ is made of are calculated as functions inside different Python script:
+- $a_{ij}$, $S(\alpha, r)$ and $T(\alpha, r)$ in `Grating_coefficients`
+- $C_{ijk}$ in `F_expansion`
+- `Geometries.py` takes into account the possibile different grating shapes
+- `OPF.py` exploits all the above scripts to eventually evaluate the $F_{ijk}$ and $f_{ijk}$ terms. All the functions are imported in `OPF.py`.
+  
 **How to use the python script**
-
-1. Call the `F_tot` function, providing the following parameters:
+1. Save the `F_expansion.py`, `Geometries.py`, `Grating_coefficients.py` and `OPF.py` scripts in the same folder
+2. From a Python console, import all the necessary functions from OPF.py:
+   `>>> from OPF import *`  
+3. Call the `F_tot` function, providing the following parameters:
 - `i, j, k` = series indexes
 - `z, zp` = object and image z coordinates in mm (considering the
     notation of Figure 4-7)
@@ -60,9 +68,8 @@ taken into account, before evaluating the $F_{ijk}$ coefficients.\
                            `rho` = R for a sphere (mm), `r_obj` = object - image distance (mm)
 	- cylinder --> `params`: `theta` = alpha, beta, i.e., respectively incidence and diffraction angle to normal (deg), `rho` = cylinder radius (mm), `r_obj` = object - grating distance (mm)
 	- plane --> `params`: `theta` = alpha, beta, i.e., respectively incidence and diffraction angle to normal (deg), `r_obj` = object - grating distance (mm)
-
-2. What to do:  
-   Example: Evaluating the `F_100` term, for a Rowland type plane grating, placed at 3800 mm from the source (object) and at 4200 mm from the image, whose z positions are, respectively z = 100 mm and zp = 150 mm, for the first internal diffraction order, at a photon energy of 1.55 eV and with alpha (incidence angle to normal) = 10.865 degrees and beta (diffraction angle to normal) = 5.865 degrees.
+  
+Example: Evaluate the `F_100` term, for a Rowland type plane grating, placed at 3800 mm from the source (object) and at 4200 mm from the image, whose z positions are, respectively z = 100 mm and zp = 150 mm, for the first internal diffraction order, at a photon energy of 1.55 eV and with alpha (incidence angle to normal) = 10.865 degrees and beta (diffraction angle to normal) = 5.865 degrees.
 - from a Python console, import all the functions from OPF:  
 `>>> from OPF import *`
 
