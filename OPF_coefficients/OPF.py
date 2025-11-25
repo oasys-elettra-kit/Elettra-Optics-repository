@@ -57,7 +57,7 @@ def F_ijk(i, j, k, z, geometry, **params):
     return a
 
 
-def F_tot(i, j, k, z, zp, geometry, m, wavelength, d0, grating_type, params_object=None, params_image=None):
+def F_totale(i, j, k, z, zp, geometry, m, wavelength, d0, grating_type, params_object=None, params_image=None):
     """
     :param i, j, k: series expansion indexes
     :param z, zp: object and image, respectively, sagittal coordinates
